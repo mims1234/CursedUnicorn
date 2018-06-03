@@ -1,6 +1,7 @@
 
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+const automod = require("./automod.json");
 const fs = require("fs");
 const bot =  new Discord.Client();
 bot.commands = new Discord.Collection();
@@ -45,6 +46,17 @@ bot.on("message" , async message => {
     {
         let commandfile = bot.commands.get(cmd.slice(prefix.length));
         if(commandfile) commandfile.run(bot,message,args);
+    }
+    
+    var keys = Object.keys(automod)
+    for(i=0;i<keys.length;i++)
+    {
+        if(cmd === keys[i])
+        {
+            message.delete().catch();
+            message.channel.send('No Swearing Please!!')
+            .then(msg => msg.delete(2000));
+        }
     }
  
 })
