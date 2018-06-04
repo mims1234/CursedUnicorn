@@ -29,7 +29,7 @@ fs.readdir("./commands/", (err,files) => {
 bot.on("ready" , async () => {
     console.log(`${bot.user.username} is online !`);
     if(!bot.on) return console.log("nodemon index.js")
-    bot.user.setActivity("Pirate#0033", {type :"LISTENING"});
+    bot.user.setActivity("Pirate#8298", {type :"LISTENING"});
 });
 
 
